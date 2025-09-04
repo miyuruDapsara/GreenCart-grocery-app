@@ -11,8 +11,10 @@ export const AppContextProvider = ({ children }) => {
     const navigate=useNavigate();
     const[user,setUser]=useState(null);
     const[isSeller,setIsSeller]=useState(false);
+    const [showUserLogin, setShowUserLogin] = useState(false);
 
-  const value = {navigate,user,setUser,isSeller,setIsSeller}; // <- place where you store shared/global state
+  const value = {navigate,user,setUser,isSeller,setIsSeller,showUserLogin,setShowUserLogin}; /* ontains all the things you want to share globally.
+                                                                Any component can access these without prop drilling.*/
 
   return (
     <AppContext.Provider value={value}>
@@ -22,4 +24,4 @@ export const AppContextProvider = ({ children }) => {
 };
 
 // 3. Custom hook to access the context easily
-export const useApp = () => useContext(AppContext);
+export const useAppContext = () => useContext(AppContext);
